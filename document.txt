@@ -1,0 +1,43 @@
+https://www.youtube.com/watch?v=xCd53npxqpE&index=2&list=PLaSPP6wN3squ6XuxOCHd2wsxZtW1tEJ7M
+
+School manamgement docu:
+download codeigniter
+download bootstrap
+download jquery
+download fileinput: 
+download full calendar: https://fullcalendar.io/download
+download jquery calendar from : http://keith-wood.name/calendars.html
+
+
+
+###########
+for update it looks for name, in the form so add name for the sake of update.
+
+name is also need for form dropdown
+
+#########
+Super clear cache -> shift + f5
+
+#########
+solving datatables: used get() in sql to get the object -> then in controller that object is changed to array I think using result() 
+and then used -> to get the data out of it. Check teacher class for fetch teacher. Also have to add draw, record total and record filtered
+$draw is used by data table to handle it correctly. 
+Helpful link : https://www.patchesoft.com/using-datatables-with-codeigniter-tutorial
+
+
+For data table good page for invalid json error in datatable:
+https://datatables.net/manual/tech-notes/1
+
+########
+Using . operator to pass data in javascript check it:
+onclick="removeTeacher('.$r->teacher_id.')"
+
+#######
+
+data coming as ajax reponse is in string so change it to object:
+  obj = JSON.parse(response);
+                    if(obj.success == true){
+                        $("#message").html('<p>' + obj.message+ '</p>');     
+                    }
+
+type can be found out be jQuery.type(obj);
