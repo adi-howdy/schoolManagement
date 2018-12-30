@@ -11,6 +11,7 @@
 				<fieldset>
 					<legend>Manage Teacher</legend>
 					<div id = "message"> </div>
+					<div id="add-teacher-messages"></div>
 					<div class="pull pull-right">
 						<button type="button" class="btn btn-default" data-toggle="modal"
 							data-target="#addTeacher" id="addTeacherModalBtn">
@@ -61,8 +62,8 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<div id="add-teacher-messages"></div>
-							<form action="teacher/createTeacher" method="post" class="createTeacherForm"
+							
+							<form action="teacher/createTeacher" method="post" id="createTeacherForm"
 								enctype="multipart/form-data">
 								<div class="modal-body create-modal">
 								
@@ -163,6 +164,142 @@
 						</div>
 					</div>
 				</div>
+			
+			
+				<!--Updating teacher-->
+
+				<div class="modal fade" id="updateTeacherModal" tabindex="-1" role="dialog">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Update  Teacher</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							
+							<form action="" method="post" id="updateTeacherForm"
+								enctype="multipart/form-data">
+								<div class="modal-body create-modal">
+								
+									<div class="row">
+
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="editfname" class="col-sm-4 control-label">First Name</label>
+												<div class="col-sm-8">
+													<input type="text" placeholder="First Name" id="editfname"
+														name="editfname" />
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="editlname" class="col-sm-4 control-label">Last Name
+												</label>
+												<div class="col-sm-8">
+													<input type="text" placeholder="Last Name" id="editlname"
+														name="editlname" />
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="editdob" class="col-sm-4 control-label">DOB </label>
+												<div class="col-sm-8">
+													<input type="text" placeholder="Date of Birth" id="editdob"
+														name="editdob" />
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="editage" class="col-sm-4 control-label">Age</label>
+												<div class="col-sm-8">
+													<input type="text" placeholder="Age" id="editage" name="editage" />
+												</div>
+											</div>
+
+
+
+											<div class="form-group">
+												<label for="editcontact" class="col-sm-4 control-label">Contact</label>
+												<div class="col-sm-8">
+													<input type="text" placeholder="Contact" id="editcontact"
+														name="editcontact" />
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="editemail" class="col-sm-4 control-label">Email</label>
+												<div class="col-sm-8">
+													<input type="text" placeholder="Email" id="editemail"
+														name="editemail" />
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="editregister" class="col-sm-4 control-label">RegisterDate</label>
+												<div class="col-sm-8">
+													<input type="text" placeholder="Register Date"
+													id="editregister"  name="editregister" />
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="editjobType" class="control-label">Job Status</label>
+												<select class="form-control" name="editjobType" id="editjobType">
+													<option value="not chosen">Choose...</option>
+													<option value="Full time">Full Time</option>
+													<option value="Part time">Part Time</option>
+												</select>
+											</div>
+
+
+												<div class="col-md-6">
+							<center>
+								<img src="" id="editimageupload" class="img-thumbnail upload-photo" />
+							</center>								
+						</div>
+<!--
+						<div class="form-group">
+												<label for="editimage" File</label> <input type="file"
+													class="form-control-file" name="editimage"
+													id="editimage">
+											</div>
+											-->
+										</div>
+										<!--md-6-->
+									</div>
+									<!--  row -->
+
+
+
+								</div>
+								<!--  create model -->
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">Close</button>
+									<button type="submit" id="updateTeacher1" class="btn btn-primary">Update changes</button>
+								</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			</div>
 		</div>
 	</div>

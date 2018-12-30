@@ -13,7 +13,8 @@ download jquery calendar from : http://keith-wood.name/calendars.html
 ###########
 for update it looks for name, in the form so add name for the sake of update.
 
-name is also need for form dropdown
+name is also need for form dropdown and also to insert data into the form. moral of story always keep the name in 
+form.
 
 #########
 Super clear cache -> shift + f5
@@ -32,6 +33,8 @@ https://datatables.net/manual/tech-notes/1
 Using . operator to pass data in javascript check it:
 onclick="removeTeacher('.$r->teacher_id.')"
 
+"updateTeacher('.$r->teacher_id.', '. $r->image.')
+
 #######
 
 data coming as ajax reponse is in string so change it to object:
@@ -41,3 +44,5 @@ data coming as ajax reponse is in string so change it to object:
                     }
 
 type can be found out be jQuery.type(obj);
+
+or  obj = jQuery.parseJSON(res);

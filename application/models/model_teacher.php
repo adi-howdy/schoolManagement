@@ -49,9 +49,48 @@
            return $this->db->get("teacher");
         }
 
+        public function fetchTeacherwithID($teacherId){
+            
+            if($teacherId){
+                $sql = "Select * from teacher where teacher_id = ?";
+                $query = $this->db->query($sql, array($teacherId));
+                $result = $query->row_array();
+                return($result);
+          //  return    $this->db->get_where('teacher', array('teacher_id' => $teacherId));
+            }
+           
+           //return $this->db->get("teacher");
+        }
+
 
         public function remove($teacherId){
             return $this->db->delete('teacher', array('teacher_id'=>$teacherId));
+        }
+
+
+        public function updateTeacher($teacherId)
+        {
+/*
+            if( $this->input->post('image') == null) {
+                $image_path = "not there";
+            }
+  */
+            //echo 'teacher id from update ' +  $teacherId;
+            $data = array(
+                'register_date' => $this->input->post('editregister'),
+                'fname' => $this->input->post('editfname'),
+                'lname' => $this->input->post('editlname'),
+                'date_of_birth'  => $this->input->post('editdob'),
+                'age' => $this->input->post('editage'),
+                'contact' => $this->input->post('editcontact'),
+                'job_type' => $this->input->post('editjobType'),
+                'email' => $this->input->post('editemail'),
+                'image' => $this->input->post('editimageupload')
+            );
+            $this->db->where('teacher_id', $teacherId);
+            $update = $this->db->update('teacher', $data);
+            return($update == true ? true: false);
+            
         }
     }
 ?>

@@ -50,22 +50,20 @@
                $inserted = $this->model_teacher->create($url);
 
                if($inserted){
-                  //$array_data['success'] =  true;
-                  // $array_data['message'] = 'Data successfully inserted';
-                  echo "<script> location.href='../'; </script>";
+                  $array_data['success'] =  true;
+                  $array_data['message'] = 'Data successfully inserted';
+                  //echo "<script> location.href='../'; </script>";
                 }
                else{
                 $array_data['success'] =  false;
                 $array_data['message'] = 'Error inserting';
                }
             }
-            /*
-            else{
-                echo 'not ok';
-            }
-*/
             echo json_encode($array_data);
         }
+
+
+        //Upload image
 
         public function upload_image(){
             $type = explode('.', $_FILES['imageUpload']['name']);
@@ -83,12 +81,18 @@
             }
         }
 
-        public function fetchTeacher(){
+        public function fetchTeacher($teacherId = null){
             $this->load->model('model_teacher');
                 $draw = intval($this->input->get("draw"));
                 $start = intval($this->input->get("start"));
                 $length = intval($this->input->get("length"));
 
+                if($teacherId){
+                   $output =  $this->model_teacher->fetchTeacherwithID($teacherId);
+                  //echo("<script>console.log('PHP: ".$output."');</script>");
+                echo json_encode($output);
+                }
+                    else{
                 $teacher1 = $this->model_teacher->fetchTeacher();
                 $data = array();
 
@@ -103,7 +107,8 @@
                      Action
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" data-target="#updateTeacherModal" ">Edit</a>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateTeacherModal" 
+                        onclick="updateTeacher('.$r->teacher_id.')">Edit</button>
                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#removeTeacher"
                        onclick="removeTeacher('.$r->teacher_id.')">Remove</button>
                     </div>
@@ -126,15 +131,37 @@
                  "recordsFiltered" => $teacher1->num_rows(),
                     "data" => $data
                 );
-                
-
-            echo json_encode($output);
+             //added here   
+             echo json_encode($output);
+            }
+           
 
 
             }
            // echo json_encode($result);
         
 
+           public function updateTeacher($teacherId){
+               $this->load->model('model_teacher');
+               //echo 'teacher id is :' + $teacherId;
+               $validator = array('success'=>true, 'message'=>array());
+
+               //if($this->form_validation->run() == true){
+               // $url = $this->upload_image();
+
+               $updated = $this->model_teacher->updateTeacher($teacherId);
+            if($updated){
+                $validator['success']= true;
+                $validator['message'] = 'Successfully updated';
+            }
+            else{
+                $validator['success']= true;
+                $validator['message'] = 'Update failed';
+            }
+
+           }
+
+           //Remove teacher 
            public function remove($teacherId){
             $this->load->model('model_teacher');
                $validator =  array('success' => true, 'message' => array());
